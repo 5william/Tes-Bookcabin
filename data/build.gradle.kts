@@ -9,6 +9,13 @@ android {
 
     defaultConfig {
         minSdk = 24
+        buildConfigField("String", "BASE_URL", "\"https://airline.api.cert.platform.sabre.com/\"")
+        buildConfigField("String", "AUTH_KEY", "\"Basic VmpFNlQwUk5NREpUUnpwUFJEcFBSQT09OlRVOUNNbE5IVDBRPQ==\"")
+
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     compileOptions {
@@ -24,4 +31,13 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
     implementation(libs.koin.core)
+
+    // Networking
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.gson)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 }

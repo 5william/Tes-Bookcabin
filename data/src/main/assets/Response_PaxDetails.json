@@ -1,0 +1,176 @@
+{
+  "reservation": {
+    "id": "res1",
+    "version": "aVeAjlLJ2WnryMn/wOmIYmrE3bvUtu26TrnT7KibXEyLTz3I67fAzw==",
+    "passengers": {
+      "passenger": [
+        {
+          "id": "p01.01",
+          "syntheticIdentifier": "Yp7abLXAd4CRsMWyilmTWFzaBBjnO+xLAzgM29b3VgK3B2+xP+uxNEC5sK1LpO0z",
+          "personName": {
+            "prefix": "MR",
+            "first": "ONE",
+            "last": "TEST",
+            "raw": "TEST/ONE MR"
+          },
+          "type": {
+            "value": "ADULT"
+          },
+          "contactDetails": {
+            "address": [
+              {
+                "id": "a1",
+                "street1": "123 DALLAS ST",
+                "postalCode": "EN14087",
+                "country": "ET",
+                "city": "SOUTHLAKE",
+                "stateProvince": "TEXAS",
+                "type": "RESIDENCE"
+              },
+              {
+                "id": "a2",
+                "street1": "123 DALLAS ST",
+                "postalCode": "EN14087",
+                "country": "ET",
+                "city": "SOUTHLAKE",
+                "stateProvince": "TEXAS",
+                "type": "DESTINATION"
+              }
+            ]
+          },
+          "emergencyContact": [
+            {
+              "id": "ec1",
+              "name": "HWBP WMXPAZ",
+              "countryCode": "US",
+              "contactDetails": "9937705177",
+              "relationship": "BROTHER"
+            }
+          ],
+          "passengerDocument": [
+            {
+              "document": {
+                "id": "id1",
+                "number": "SQKSLARJG",
+                "personName": {
+                  "first": "TEST",
+                  "last": "KRISHNA"
+                },
+                "nationality": "MY",
+                "dateOfBirth": "1994-07-19",
+                "issuingCountry": "MY",
+                "expiryDate": "2024-09-19",
+                "gender": "MALE",
+                "type": "PASSPORT"
+              }
+            }
+          ],
+          "ticket": [
+            {
+              "ticketNumber": {
+                "number": "8162129141613"
+              },
+              "issued": true,
+              "ticketCoupon": [
+                {
+                  "couponNumber": "1",
+                  "fareBasisCode": "YODBSSMY",
+                  "currentStatus": "OK",
+                  "segmentRef": "s1",
+                  "status": "OK"
+                }
+              ]
+            }
+          ],
+          "passengerSegments": {
+            "passengerSegment": [
+              {
+                "id": "p01.01.s1",
+                "passengerFlight": [
+                  {
+                    "id": "p01.01.s1.f1",
+                    "flightRefs": [
+                      "f1"
+                    ],
+                    "checkedIn": false
+                  }
+                ],
+                "segmentRef": "s1"
+              }
+            ]
+          },
+          "eligibilities": {
+            "eligibility": [
+              {
+                "reason": [
+                  {
+                    "category": "ALLOWED_BAG_TAG_ISSUANCE_PRIOR_TO_PAYMENT",
+                    "message": "Passenger is eligible to have bag tag issued prior to payment"
+                  }
+                ],
+                "notEligible": false,
+                "type": "BAGGAGE_CHECK_IN"
+              }
+            ]
+          },
+          "weightCategory": "ADULT_MALE",
+          "nameNumber": "01.01"
+        }
+      ]
+    },
+    "itinerary": {
+      "itineraryPart": [
+        {
+          "id": "ip1",
+          "segment": [
+            {
+              "id": "s1",
+              "status": {
+                "value": "CONFIRMED",
+                "code": "HK"
+              },
+              "flightDetail": [
+                {
+                  "id": "f1",
+                  "estimatedDepartureTime": "2025-06-20T21:00:00+08:00",
+                  "estimatedArrivalTime": "2025-06-20T22:00:00+08:00",
+                  "departureFlightScheduleStatus": "ON_TIME",
+                  "boardingTime": "2025-06-20T20:15:00+08:00",
+                  "departureTerminal": "A",
+                  "departureGate": "A11",
+                  "departureCountry": "MY",
+                  "arrivalCountry": "MY",
+                  "commuter": false,
+                  "airline": "OD",
+                  "arrivalAirport": "PEN",
+                  "arrivalTime": "2025-06-20T22:00:00+08:00",
+                  "departureAirport": "KUL",
+                  "departureTime": "2025-06-20T21:00:00+08:00",
+                  "equipment": "738",
+                  "flightNumber": "2106",
+                  "operatingAirline": "OD",
+                  "operatingAirlineName": "BATIK AIR MALAYSIA",
+                  "operatingFlightNumber": "2106"
+                }
+              ],
+              "fareInfo": {
+                "bookingClass": "Y"
+              },
+              "baggageCheckInRules": {
+                "petAllowed": true,
+                "lateCheckIn": false,
+                "homePrintedBagTagRestricted": {
+                  "type": "RESTRICTED",
+                  "message": "Home Printed Bag Tag is not allowed for given airline."
+                }
+              },
+              "number": "3"
+            }
+          ],
+          "type": "OUTBOUND"
+        }
+      ]
+    },
+    "recordLocator": "SRPFNM"
+  }
+}

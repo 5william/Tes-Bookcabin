@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Test Bookcabin</string>
+    <string name="online_check_in">ONLINE \nCHECK-IN</string>
+    <string name="pnr">PNR</string>
+    <string name="last_name">Last Name</string>
+    <string name="conti">Continue</string>
 </resources>
