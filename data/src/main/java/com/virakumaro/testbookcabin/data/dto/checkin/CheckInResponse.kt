@@ -36,6 +36,6 @@ data class BoardingPassDto(
 )
 
 data class SeatDto(
-    @SerializedName("number")
+    @SerializedName("value")
     val number: String?
 )

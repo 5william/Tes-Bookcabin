@@ -4,6 +4,7 @@ import com.virakumaro.testbookcabin.data.BuildConfig
 import com.virakumaro.testbookcabin.data.api.AuthApi
 import com.virakumaro.testbookcabin.data.api.CheckInApi
 import com.virakumaro.testbookcabin.data.interceptor.AuthInterceptor
+import com.virakumaro.testbookcabin.data.interceptor.SessionInterceptor
 import com.virakumaro.testbookcabin.data.local.TokenManager
 import com.virakumaro.testbookcabin.data.repository.CheckInRepositoryImpl
 import com.virakumaro.testbookcabin.domain.repository.CheckInRepository
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit
 
 val dataModule = module {
     single { TokenManager(get()) }
+    single { SessionInterceptor(get()) }
     single {
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -42,6 +44,7 @@ val dataModule = module {
     single(named("MainRetrofit")) {
         val client = OkHttpClient.Builder()
             .addInterceptor(get<AuthInterceptor>())
+            .addInterceptor(get<SessionInterceptor>())
             .addInterceptor(get<HttpLoggingInterceptor>())
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)

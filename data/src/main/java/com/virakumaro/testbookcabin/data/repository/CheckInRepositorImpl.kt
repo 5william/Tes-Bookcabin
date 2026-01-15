@@ -1,7 +1,6 @@
 package com.virakumaro.testbookcabin.data.repository
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.virakumaro.testbookcabin.core.Results
@@ -57,12 +56,7 @@ class CheckInRepositoryImpl(
             } else {
                 response = checkInApi.getPassengerDetails(request = request)
             }
-            try {//TODO remove later
-                val requestJson = Gson().toJson(request)
-                Log.d("CheckInRepository", "getBooking Request: $requestJson")
-            } catch (e: Exception) {
-                Log.e("CheckInRepository", "Failed to print request JSON", e)
-            }
+
 
 
             val passenger = response.reservation?.passengers?.passenger?.firstOrNull()
@@ -180,12 +174,7 @@ class CheckInRepositoryImpl(
                 checkInApi.updatePassengerDetails(request = request)
                 emit(Results.Success(Unit))
             }
-            try {//TODO remove later
-                val requestJson = Gson().toJson(request)
-                Log.d("CheckInRepository", "updatePassengerDetails Request: $requestJson")
-            } catch (e: Exception) {
-                Log.e("CheckInRepository", "Failed to print request JSON", e)
-            }
+
         } catch (e: Exception) {
             emit(Results.Error(e.message ?: "Unknown error occurred during update"))
         }
@@ -232,12 +221,6 @@ class CheckInRepositoryImpl(
                 emit(Results.Error("Failed to retrieve Boarding Pass"))
             }
 
-            try {//TODO remove later
-                val requestJson = Gson().toJson(request)
-                Log.d("CheckInRepository", "CheckIn Request: $requestJson")
-            } catch (e: Exception) {
-                Log.e("CheckInRepository", "Failed to print request JSON", e)
-            }
 
         } catch (e: Exception) {
             emit(Results.Error(e.message ?: "Check-In Failed"))

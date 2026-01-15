@@ -15,4 +15,6 @@
     <string name="passport_number">Passport Number</string>
     <string name="check_in">CHECK-IN</string>
     <string name="check_in_button">Check in</string>
+    <string name="boarding_pass">Boarding Pass</string>
+    <string name="seat">SEAT</string>
 </resources>

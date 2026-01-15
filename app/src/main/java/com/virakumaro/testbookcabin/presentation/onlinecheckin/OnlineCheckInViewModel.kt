@@ -21,8 +21,8 @@ class OnlineCheckInViewModel(
     val bookingState: StateFlow<Results<Booking>?> = _bookingState.asStateFlow()
 
     var selectedBooking by mutableStateOf<Booking?>(null)
-    var pnr by mutableStateOf("SDQASDA")
-    var lastName by mutableStateOf("Test")
+    var pnr by mutableStateOf("")
+    var lastName by mutableStateOf("")
 
     fun findBooking() {
         viewModelScope.launch {

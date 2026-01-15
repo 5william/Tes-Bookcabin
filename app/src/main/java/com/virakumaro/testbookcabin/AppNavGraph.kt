@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.virakumaro.testbookcabin.presentation.boardingpass.BoardingPassScreen
 import com.virakumaro.testbookcabin.presentation.checkin.CheckInSummaryScreen
 import com.virakumaro.testbookcabin.presentation.checkin.CheckInSummaryViewModel
 import com.virakumaro.testbookcabin.presentation.detail.PassengerDetailsScreen
@@ -54,11 +55,11 @@ fun AppNavGraph(
             val parentEntry = remember(backStackEntry) {
                 navController.getBackStackEntry("online_check_in")
             }
-            val sharedVm: OnlineCheckInViewModel = koinViewModel(viewModelStoreOwner = parentEntry)
+            val prevViewModel: OnlineCheckInViewModel = koinViewModel(viewModelStoreOwner = parentEntry)
             val viewModel: CheckInSummaryViewModel = koinViewModel()
 
             CheckInSummaryScreen(
-                booking = sharedVm.selectedBooking,
+                booking = prevViewModel.selectedBooking,
                 onNavigateToBoardingPass = {
                      navController.navigate("boarding_pass")
                 },
@@ -66,8 +67,15 @@ fun AppNavGraph(
             )
         }
 
-        composable("boarding_pass") {
+        composable("boarding_pass") {backStackEntry ->
+            val parentEntry = remember(backStackEntry) {
+                navController.getBackStackEntry("check_in_summary")
+            }
+            val prevViewModel: CheckInSummaryViewModel = koinViewModel(viewModelStoreOwner = parentEntry)
 
+            BoardingPassScreen(
+                boardingPass = prevViewModel.boardingPassData
+            )
         }
     }
 }

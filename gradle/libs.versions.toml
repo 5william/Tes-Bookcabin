@@ -14,7 +14,7 @@ retrofit = "2.9.0"
 okhttp = "4.12.0"
 gson = "2.10.1"
 coroutines = "1.9.0"
-
+zxing = "3.5.3"
 
 
 [libraries]
@@ -35,9 +35,9 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 
 #Network
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }

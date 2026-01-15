@@ -16,11 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import com.virakumaro.testbookcabin.R
 import com.virakumaro.testbookcabin.core.Results
+import com.virakumaro.testbookcabin.domain.model.BoardingPass
 import com.virakumaro.testbookcabin.domain.model.Booking
 import com.virakumaro.testbookcabin.ui.theme.DarkBlue
 import com.virakumaro.testbookcabin.ui.theme.PrimaryOrange
@@ -32,19 +34,35 @@ fun CheckInSummaryScreen(
     onNavigateToBoardingPass: () -> Unit,
     viewModel: CheckInSummaryViewModel
 ) {
-    val view = LocalView.current
     val saveState by viewModel.checkInState.collectAsState()
-
-
-    SideEffect {
-        val window = (view.context as Activity).window
-        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
-    }
 
     LaunchedEffect(saveState) {
         if (saveState is Results.Success) {
             onNavigateToBoardingPass()
             viewModel.setStateIdle()
+        }
+    }
+
+    CheckInSummaryContent(
+        booking = booking,
+        saveState = saveState,
+        onCheckInClick = {
+            booking?.let { viewModel.performCheckIn(it.passengerId) }
+        }
+    )
+}
+
+@Composable
+fun CheckInSummaryContent(
+    booking: Booking?,
+    saveState: Results<BoardingPass>?,
+    onCheckInClick: () -> Unit
+) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }
 
@@ -87,9 +105,7 @@ fun CheckInSummaryScreen(
 
         Button(
             enabled = saveState !is Results.Loading,
-            onClick = { booking?.let {
-                viewModel.performCheckIn(it.passengerId)
-            }},
+            onClick = onCheckInClick,
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = PrimaryOrange,
@@ -104,8 +120,36 @@ fun CheckInSummaryScreen(
             if (saveState is Results.Loading) {
                 CircularProgressIndicator(color = Color.White, modifier = Modifier.size(24.dp))
             } else {
-                Text(text = stringResource(R.string.check_in_button), fontWeight = FontWeight.Bold, color = Color.White)
+                Text(
+                    text = stringResource(R.string.check_in_button),
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
             }
         }
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun CheckInSummaryPreview() {
+    val dummyBooking = Booking(
+        pnr = "ABC1234",
+        firstName = "JOHN",
+        lastName = "DOE",
+        passengerId = "p01.01",
+        flightNumber = "OD 202",
+        departureCity = "KUL",
+        arrivalCity = "PEN",
+        departureTime = "10:00 AM",
+        documentId = "", documentType = "", emergencyContactId = "",
+        dateOfBirth = "", expiryDate = "", nationality = "", gender = "", weightCategory = ""
+    )
+
+    CheckInSummaryContent(
+        booking = dummyBooking,
+        saveState = null,
+        onCheckInClick = {}
+    )
 }

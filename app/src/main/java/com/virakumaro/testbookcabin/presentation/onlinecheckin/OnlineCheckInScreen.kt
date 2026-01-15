@@ -1,5 +1,6 @@
 package com.virakumaro.testbookcabin.presentation.onlinecheckin
 
+import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -7,10 +8,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import com.virakumaro.testbookcabin.R
 import com.virakumaro.testbookcabin.core.Results
 import com.virakumaro.testbookcabin.domain.model.Booking
@@ -24,6 +27,14 @@ fun OnlineCheckInScreen(
     onNavigateToDetails: (Booking) -> Unit,
     viewModel: OnlineCheckInViewModel = koinViewModel()
 ) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+        }
+    }
+
     val state by viewModel.bookingState.collectAsState()
 
     LaunchedEffect(state) {
@@ -75,7 +86,7 @@ fun OnlineCheckInScreen(
                 .padding(vertical = 8.dp)
         )
 
-        Spacer(modifier = Modifier.height(16.dp));
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = stringResource(R.string.last_name),

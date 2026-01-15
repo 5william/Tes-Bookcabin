@@ -25,7 +25,6 @@ import com.virakumaro.testbookcabin.ui.theme.DarkBlue
 import com.virakumaro.testbookcabin.ui.theme.PrimaryOrange
 import com.virakumaro.testbookcabin.ui.theme.LightGray
 import com.virakumaro.testbookcabin.ui.theme.White
-import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,9 +38,11 @@ fun PassengerDetailsScreen(
 
     val scrollState = rememberScrollState()
 
-    SideEffect {
-        val window = (view.context as Activity).window
-        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+        }
     }
 
     LaunchedEffect(viewModel.validationErrorMessage) {

@@ -8,6 +8,7 @@ class TokenManager(context: Context) {
 
     companion object {
         private const val KEY_ACCESS_TOKEN = "access_token"
+        private const val KEY_SESSION_ID = "session_id"
     }
 
     fun saveToken(token: String) {
@@ -18,7 +19,12 @@ class TokenManager(context: Context) {
         return prefs.getString(KEY_ACCESS_TOKEN, null)
     }
 
-    fun clearToken() {
-        prefs.edit().remove(KEY_ACCESS_TOKEN).apply()
+    fun saveSessionId(sessionId: String) {
+        prefs.edit().putString(KEY_SESSION_ID, sessionId).apply()
     }
+
+    fun getSessionId(): String? {
+        return prefs.getString(KEY_SESSION_ID, null)
+    }
+
 }
