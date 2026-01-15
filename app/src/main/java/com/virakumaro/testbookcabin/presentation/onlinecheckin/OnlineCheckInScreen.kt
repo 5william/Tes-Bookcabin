@@ -1,4 +1,4 @@
-package com.virakumaro.testbookcabin.presentation.checkin
+package com.virakumaro.testbookcabin.presentation.onlinecheckin
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,21 +13,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.virakumaro.testbookcabin.R
 import com.virakumaro.testbookcabin.core.Results
+import com.virakumaro.testbookcabin.domain.model.Booking
 import com.virakumaro.testbookcabin.ui.theme.DarkBlue
 import com.virakumaro.testbookcabin.ui.theme.PrimaryOrange
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(
-    onNavigateToDetails: () -> Unit,
-    viewModel: CheckInViewModel = koinViewModel()
+fun OnlineCheckInScreen(
+    onNavigateToDetails: (Booking) -> Unit,
+    viewModel: OnlineCheckInViewModel = koinViewModel()
 ) {
     val state by viewModel.bookingState.collectAsState()
 
     LaunchedEffect(state) {
         if (state is Results.Success) {
-            onNavigateToDetails()
+            onNavigateToDetails((state as Results.Success).data)
             viewModel.resetState()
         }
     }

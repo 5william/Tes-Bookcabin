@@ -1,4 +1,4 @@
-package com.virakumaro.testbookcabin.presentation.checkin
+package com.virakumaro.testbookcabin.presentation.onlinecheckin
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,20 +13,24 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class CheckInViewModel(
+class OnlineCheckInViewModel(
     private val getBookingUseCase: GetBookingUseCase
 ) : ViewModel() {
 
     private val _bookingState = MutableStateFlow<Results<Booking>?>(null)
     val bookingState: StateFlow<Results<Booking>?> = _bookingState.asStateFlow()
 
-    var pnr by mutableStateOf("")
-    var lastName by mutableStateOf("")
+    var selectedBooking by mutableStateOf<Booking?>(null)
+    var pnr by mutableStateOf("SDQASDA")
+    var lastName by mutableStateOf("Test")
 
     fun findBooking() {
         viewModelScope.launch {
             getBookingUseCase(pnr, lastName).collect { result ->
                 _bookingState.value = result
+                if (result is Results.Success) {
+                    selectedBooking = result.data
+                }
             }
         }
     }

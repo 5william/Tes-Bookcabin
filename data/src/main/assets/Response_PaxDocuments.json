@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "update": {
+        "value": "p01.01.d01",
+        "context": "PASSENGER_DOCUMENT",
+        "operation": "ADD"
+      },
+      "status": [
+        {
+          "type": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "update": {
+        "value": "p01.01.ec01",
+        "context": "PASSENGER_EMERGENCY_CONTACT",
+        "operation": "ADD"
+      },
+      "status": [
+        {
+          "type": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "update": {
+        "value": "p01.01",
+        "context": "PASSENGER_WEIGHT_CATEGORY",
+        "operation": "ADD"
+      },
+      "status": [
+        {
+          "type": "SUCCESS"
+        }
+      ]
+    }
+  ]
+}
