@@ -29,7 +29,7 @@ fun OnlineCheckInScreen(
     LaunchedEffect(state) {
         if (state is Results.Success) {
             onNavigateToDetails((state as Results.Success).data)
-            viewModel.resetState()
+            viewModel.setStateIdle()
         }
     }
 

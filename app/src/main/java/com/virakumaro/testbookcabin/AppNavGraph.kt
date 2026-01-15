@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.virakumaro.testbookcabin.presentation.checkin.CheckInSummaryScreen
+import com.virakumaro.testbookcabin.presentation.checkin.CheckInSummaryViewModel
 import com.virakumaro.testbookcabin.presentation.detail.PassengerDetailsScreen
 import com.virakumaro.testbookcabin.presentation.detail.PassengerDetailsViewModel
 import com.virakumaro.testbookcabin.presentation.onlinecheckin.OnlineCheckInScreen
@@ -54,14 +55,19 @@ fun AppNavGraph(
                 navController.getBackStackEntry("online_check_in")
             }
             val sharedVm: OnlineCheckInViewModel = koinViewModel(viewModelStoreOwner = parentEntry)
+            val viewModel: CheckInSummaryViewModel = koinViewModel()
 
             CheckInSummaryScreen(
                 booking = sharedVm.selectedBooking,
-                onCheckInClick = {
-                    // Di sini nanti kita akan panggil API Check-In (Screen 4)
-                    // navController.navigate("boarding_pass")
-                }
+                onNavigateToBoardingPass = {
+                     navController.navigate("boarding_pass")
+                },
+                viewModel
             )
+        }
+
+        composable("boarding_pass") {
+
         }
     }
 }

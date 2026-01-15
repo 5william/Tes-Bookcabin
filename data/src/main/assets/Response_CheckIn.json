@@ -1,0 +1,89 @@
+{
+  "boardingPasses": [
+    {
+      "passengerFlightId": "p01.01.s1.f1",
+      "boardingPass": {
+        "source": "HOST",
+        "priorityVerificationCard": false,
+        "recordLocator": "SRPFNM",
+        "ticketNumber": {
+          "airlineAccountingCode": "816",
+          "serialNumber": "2129141613",
+          "checkDigit": "2",
+          "number": "81621291416132"
+        },
+        "ticketCouponNumber": "1",
+        "personName": {
+          "first": "ONE MR",
+          "last": "TEST"
+        },
+        "flightDetail": {
+          "estimatedDepartureTime": "2025-06-20T21:00:00+08:00",
+          "estimatedArrivalTime": "2025-06-20T22:00:00+08:00",
+          "departureFlightScheduleStatus": "ON_TIME",
+          "boardingTime": "2025-06-20T20:15:00+08:00",
+          "departureTerminal": "A",
+          "departureGate": "A11",
+          "departureCountry": "MY",
+          "arrivalCountry": "MY",
+          "commuter": false,
+          "airline": "OD",
+          "arrivalAirport": "PEN",
+          "arrivalTime": "2025-06-20T22:00:00+08:00",
+          "departureAirport": "KUL",
+          "departureTime": "2025-06-20T21:00:00+08:00",
+          "equipment": "738",
+          "flightNumber": "2106",
+          "operatingAirline": "OD",
+          "operatingFlightNumber": "2106"
+        },
+        "fareInfo": {
+          "bookingClass": "Y"
+        },
+        "seat": {
+          "value": "5A"
+        },
+        "deck": {
+          "value": "MAIN",
+          "code": "L"
+        },
+        "group": "2",
+        "zone": "2",
+        "checkInSequenceNumber": "00001",
+        "barCode": "M1TEST/ONE MR         ESRPFNM KULPENOD 2106 171Y005A0001 100",
+        "agent": {
+          "sign": "SSC",
+          "city": "HDQ",
+          "country": "MY"
+        },
+        "supplementaryData": {
+          "exclusiveWaitingArea": false,
+          "loungeAccess": false
+        },
+        "displayData": {
+          "operatingAirlineName": "BATIK AIR MALAYSIA",
+          "boardingTime": "201500",
+          "estimatedDepartureDate": "2025-06-20",
+          "estimatedDepartureTime": "210000",
+          "departureAirportName": "KUALA LUMPUR",
+          "estimatedArrivalTime": "220000",
+          "arrivalAirportName": "PENANG",
+          "ticketTypeText": "ELECTRONIC",
+          "documentTypeText": "BOARDING PASS",
+          "pingTipText": "N",
+          "agentCityName": "KUALA LUMPUR"
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "status": [
+        {
+          "type": "SUCCESS"
+        }
+      ],
+      "passengerFlightRef": "p01.01.s1.f1"
+    }
+  ]
+}

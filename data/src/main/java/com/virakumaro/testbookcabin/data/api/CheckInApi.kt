@@ -1,5 +1,7 @@
 package com.virakumaro.testbookcabin.data.api
 
+import com.virakumaro.testbookcabin.data.dto.checkin.CheckInRequest
+import com.virakumaro.testbookcabin.data.dto.checkin.CheckInResponse
 import com.virakumaro.testbookcabin.data.dto.detail.PassengerDetailsRequest
 import com.virakumaro.testbookcabin.data.dto.detail.PassengerDetailsResponse
 import com.virakumaro.testbookcabin.data.dto.document.PassengerDocumentsRequest
@@ -21,4 +23,9 @@ interface CheckInApi {
         @Body request: PassengerDocumentsRequest
     ): PassengerDocumentsResponse
 
+    @POST("v918/dcci/passenger/checkin")
+    suspend fun checkIn(
+        @Query("jipcc") jipcc: String = "ODCI",
+        @Body request: CheckInRequest
+    ): CheckInResponse
 }

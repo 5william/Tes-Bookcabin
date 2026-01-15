@@ -35,7 +35,7 @@ class OnlineCheckInViewModel(
         }
     }
 
-    fun resetState() {
+    fun setStateIdle() {
         _bookingState.value = null
     }
 }

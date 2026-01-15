@@ -32,7 +32,7 @@ import org.koin.androidx.compose.koinViewModel
 fun PassengerDetailsScreen(
     booking: Booking?,
     onNavigateToSummary: () -> Unit,
-    viewModel: PassengerDetailsViewModel = koinViewModel()
+    viewModel: PassengerDetailsViewModel
 ) {
     val view = LocalView.current
     val saveState by viewModel.saveState.collectAsState()

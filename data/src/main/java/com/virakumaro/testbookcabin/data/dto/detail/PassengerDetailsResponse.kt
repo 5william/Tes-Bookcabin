@@ -74,7 +74,9 @@ data class FlightDetailDto(
     @SerializedName("departureTime")
     val departureTime: String?,
     @SerializedName("operatingAirlineName")
-    val operatingAirlineName: String?
+    val operatingAirlineName: String?,
+    @SerializedName("departureGate")
+    val departureGate: String?,
 )
 
 data class DocumentWrapperDto(
