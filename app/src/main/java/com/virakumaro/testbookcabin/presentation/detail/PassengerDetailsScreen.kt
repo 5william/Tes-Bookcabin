@@ -93,6 +93,8 @@ fun PassengerDetailsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color.White)
+                .statusBarsPadding()
                 .verticalScroll(scrollState)
                 .padding(paddingValues)
                 .padding(horizontal = 24.dp)
