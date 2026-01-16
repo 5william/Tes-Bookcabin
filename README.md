@@ -10,7 +10,7 @@ APK and Screen record is using mock for testing
 
 ### 🎬 Screen Record & Demo
 
-<img src="https://github.com/user-attachments/assets/89d9fb46-ff07-4689-94a6-87b123eea486" width="300">
+<img src="https://github.com/user-attachments/assets/388a9aae-f7bf-4ae7-a329-8dc4077aaea2" width="300">
 
 ### 🚀 APK Link
 https://drive.google.com/file/d/1Cy42DXyMIYaAQUNtN-rrZZm_oKsw-Zzd/view?usp=sharing
