@@ -7,6 +7,7 @@ import com.virakumaro.testbookcabin.data.interceptor.AuthInterceptor
 import com.virakumaro.testbookcabin.data.interceptor.SessionInterceptor
 import com.virakumaro.testbookcabin.data.local.TokenManager
 import com.virakumaro.testbookcabin.data.repository.CheckInRepositoryImpl
+import com.virakumaro.testbookcabin.data.repository.CheckInRepositoryMock
 import com.virakumaro.testbookcabin.domain.repository.CheckInRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -59,6 +60,12 @@ val dataModule = module {
     single {
         get<Retrofit>(named("MainRetrofit")).create(CheckInApi::class.java)
     }
-    single<CheckInRepository> { CheckInRepositoryImpl(get(), get()) }
+    single<CheckInRepository> {
+        if (BuildConfig.USE_MOCK_DATA) {
+            CheckInRepositoryMock(get())
+        } else {
+            CheckInRepositoryImpl(get())
+        }
+    }
 
 }

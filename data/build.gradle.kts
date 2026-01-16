@@ -11,6 +11,7 @@ android {
         minSdk = 24
         buildConfigField("String", "BASE_URL", "\"https://airline.api.cert.platform.sabre.com/\"")
         buildConfigField("String", "AUTH_KEY", "\"Basic VmpFNlQwUk5NREpUUnpwUFJEcFBSQT09OlRVOUNNbE5IVDBRPQ==\"")
+        buildConfigField("boolean", "USE_MOCK_DATA", "true")
 
     }
 
